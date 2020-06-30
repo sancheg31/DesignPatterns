@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#include "Visitor/VisitorExecution.hpp"
+#include "CyclicVisitor/VisitorExecution.hpp"
 #include "AcyclicVisitor/AcyclicVisitorExecution.hpp"
 
 int main() {

@@ -1,15 +1,15 @@
 #pragma once
 
 #include <string>
-#include "BasicAcyclicVisitor.hpp"
+#include "BaseAcyclicVisitable.hpp"
 
 namespace patterns {
 namespace acyclic_visitor {
 
-class Widget
+class Widget: public BaseVisitable<>
 {
 public:
-    virtual void accept(BasicAcyclicVisitor*);
+    DEFINE_VISITABLE
     virtual std::string text() const;
     virtual ~Widget() { }
 };

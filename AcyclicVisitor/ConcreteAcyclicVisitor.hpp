@@ -1,19 +1,24 @@
 #pragma once
 
 #include "BasicAcyclicVisitor.hpp"
-#include "AcyclicWidgetVisitor.hpp"
-#include "ConcreteAcyclicWidget1Visitor.hpp"
-#include "ConcreteAcyclicWidget2Visitor.hpp"
 
 namespace patterns {
 namespace acyclic_visitor {
 
+class Widget;
+class ConcreteWidget1;
+class ConcreteWidget2;
+
 class ConcreteVisitor: public BasicAcyclicVisitor,
-                        public WidgetVisitor,
-                        public ConcreteWidget1Visitor,
-                        public ConcreteWidget2Visitor
+                        public VisitorNode<Widget>,
+                        public VisitorNode<ConcreteWidget1>,
+                        public VisitorNode<ConcreteWidget2>
 {
 public:
+    virtual void visit(Widget* w) override;
+    virtual void visit(ConcreteWidget1* cw1) override;
+    virtual void visit(ConcreteWidget2* cw2) override;
+
     virtual ~ConcreteVisitor() { }
 };
 

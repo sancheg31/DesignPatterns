@@ -7,6 +7,8 @@ class Widget;
 class ConcreteWidget1;
 class ConcreteWidget2;
 
+
+
 class BasicVisitor
 {
 public:
