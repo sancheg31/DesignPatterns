@@ -5,10 +5,12 @@
 namespace patterns {
 namespace visitor {
 
+class ConcreteVisitor;
+
 class ConcreteWidget1: public Widget
 {
 public:
-    virtual void accept(BasicVisitor*) override;
+    DEFINE_CYCLIC_VISITABLE(BasicWidgetVisitor)
     virtual std::string text() const override;
     virtual ~ConcreteWidget1() { }
 };

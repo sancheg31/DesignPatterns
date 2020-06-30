@@ -9,7 +9,7 @@ namespace acyclic_visitor {
 class Widget: public BaseVisitable<>
 {
 public:
-    DEFINE_VISITABLE
+    DEFINE_ACYCLIC_VISITABLE
     virtual std::string text() const;
     virtual ~Widget() { }
 };

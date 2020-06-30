@@ -5,7 +5,7 @@
 namespace patterns {
 namespace visitor {
 
-class ConcreteVisitor: public BasicVisitor
+class ConcreteVisitor: public BasicVisitor<void, Widget, ConcreteWidget1, ConcreteWidget2>
 {
 public:
     virtual void visit(Widget*) override;

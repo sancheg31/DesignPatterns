@@ -7,10 +7,6 @@
 namespace patterns {
 namespace visitor {
 
-void Widget::accept(BasicVisitor* visitor) {
-    visitor->visit(this);
-}
-
 std::string Widget::text() const {
     return "Widget";
 }

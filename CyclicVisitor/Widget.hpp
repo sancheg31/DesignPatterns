@@ -1,17 +1,18 @@
 #pragma once
 
+#include "BaseCyclicVisitable.hpp"
+
+#include "ConcreteVisitor.hpp"
 
 #include <string>
 
 namespace patterns {
 namespace visitor {
 
-class BasicVisitor;
-
-class Widget
+class Widget: public BaseVisitable<BasicWidgetVisitor>
 {
 public:
-    virtual void accept(BasicVisitor*);
+    DEFINE_CYCLIC_VISITABLE(BasicWidgetVisitor)
     virtual std::string text() const;
     virtual ~Widget() { }
 };

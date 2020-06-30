@@ -2,7 +2,7 @@
 
 #include "BasicAcyclicVisitor.hpp"
 
-#define DEFINE_VISITABLE \
+#define DEFINE_ACYCLIC_VISITABLE \
     virtual return_type accept(BasicAcyclicVisitor* visitor) override \
     { return acceptImpl(this, visitor); }
 

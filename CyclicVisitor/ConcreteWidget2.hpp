@@ -8,7 +8,7 @@ namespace visitor {
 class ConcreteWidget2: public Widget
 {
 public:
-    virtual void accept(BasicVisitor*) override;
+    DEFINE_CYCLIC_VISITABLE(BasicWidgetVisitor)
     virtual std::string text() const override;
     virtual ~ConcreteWidget2() { }
 };

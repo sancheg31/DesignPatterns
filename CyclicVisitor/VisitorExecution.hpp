@@ -17,7 +17,7 @@ public:
     void execute() {
 
         std::cout << "Visitor execution\n";
-        BasicVisitor* visitor = new ConcreteVisitor();
+        BasicWidgetVisitor* visitor = new ConcreteVisitor();
         std::vector<Widget*> widgets;
         widgets.push_back(new Widget());
         widgets.push_back(new ConcreteWidget2());
