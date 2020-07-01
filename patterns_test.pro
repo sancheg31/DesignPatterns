@@ -19,6 +19,20 @@ SOURCES += \
         main.cpp
 
 HEADERS += \ \
+    AbstractFactory/AbstractEnemy.hpp \
+    AbstractFactory/AbstractEnemyFactory.hpp \
+    AbstractFactory/AbstractFactoryExecution.hpp \
+    AbstractFactory/EasyEnemyFactory.hpp \
+    AbstractFactory/HardEnemyFactory.hpp \
+    AbstractFactory/MediumEnemyFactory.hpp \
+    AbstractFactory/monsters/AbstractMonster.hpp \
+    AbstractFactory/monsters/EasyMonster.hpp \
+    AbstractFactory/monsters/HardMonster.hpp \
+    AbstractFactory/monsters/MediumMonster.hpp \
+    AbstractFactory/soldiers/AbstractSoldier.hpp \
+    AbstractFactory/soldiers/EasySoldier.hpp \
+    AbstractFactory/soldiers/HardSoldier.hpp \
+    AbstractFactory/soldiers/MediumSoldier.hpp \
     AcyclicVisitor/AcyclicVisitorExecution.hpp \
     AcyclicVisitor/AcyclicWidget.hpp \
     AcyclicVisitor/BaseAcyclicVisitable.hpp \
