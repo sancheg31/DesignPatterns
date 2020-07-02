@@ -7,19 +7,10 @@
 namespace patterns {
 namespace abstract_factory {
 
-class MediumEnemyFactory: public AbstractEnemyFactory
-{
-public:
-    virtual MediumSoldier* makeSoldier() const override {
-        return new MediumSoldier();
-    }
-    virtual MediumMonster* makeMonster() const override {
-        return new MediumMonster();
-    }
-    virtual std::string name() const override {
-        return "MediumEnemyFactory";
-    }
-};
+
+using MediumEnemyFactory = TemplateConcreteFactory<AbstractEnemyFactory,
+                                                ConcreteFactoryUnit,
+                                                type_list<MediumMonster, MediumSoldier>>;
 
 } //abstract factory
 } //patterns

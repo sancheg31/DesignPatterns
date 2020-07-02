@@ -21,13 +21,11 @@ public:
         testFactory(factory);
         factory = new HardEnemyFactory();
         testFactory(factory);
-
     }
 
     void testFactory(AbstractEnemyFactory* factory) {
-        std::cout << "Factory name is: " << factory->name() << '\n';
-        std::cout << "soldier is: " << factory->makeSoldier()->text() << '\n';
-        std::cout << "monster is: " << factory->makeMonster()->text() << "\n\n";
+        std::cout << "soldier is: " << factory->create<AbstractSoldier>()->text() << '\n';
+        std::cout << "monster is: " << factory->create<AbstractMonster>()->text() << "\n\n";
     }
 };
 

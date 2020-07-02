@@ -8,19 +8,9 @@
 namespace patterns {
 namespace abstract_factory {
 
-class EasyEnemyFactory: public AbstractEnemyFactory
-{
-public:
-    virtual EasySoldier* makeSoldier() const override {
-        return new EasySoldier();
-    }
-    virtual EasyMonster* makeMonster() const override {
-        return new EasyMonster();
-    }
-    virtual std::string name() const override {
-        return "EasyEnemyFactory";
-    }
-};
+using EasyEnemyFactory = TemplateConcreteFactory<AbstractEnemyFactory,
+                                                ConcreteFactoryUnit,
+                                                type_list<EasyMonster, EasySoldier>>;
 
 } //abstract factory
 } //patterns
