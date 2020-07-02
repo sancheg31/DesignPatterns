@@ -19,12 +19,15 @@ class ConcreteFactoryUnit: public Base
 {
     using base_product_list = typename Base::product_list;
 protected:
+
     using product_list = pop_front_t<base_product_list>;
-public:
     using abstract_product = first_t<base_product_list>;
+
     virtual ConcreteProduct* doCreate(TType<abstract_product>) override {
         return new ConcreteProduct();
     }
+
+public:
     virtual ~ConcreteFactoryUnit() { }
 };
 
@@ -32,7 +35,7 @@ template <template <class> class TUnit, class TList>
 class TemplateAbstractFactory;
 
 template <template <class> class TUnit, typename ... Tp>
-class TemplateAbstractFactory<TUnit, type_list<Tp...>>: public TUnit<Tp>...
+class TemplateAbstractFactory<TUnit, type_list<Tp...>>: protected TUnit<Tp>...
 {
 public:
     using product_list = type_list<Tp...>;
