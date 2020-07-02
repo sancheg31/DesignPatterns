@@ -33,6 +33,7 @@ HEADERS += \ \
     AbstractFactory/soldiers/EasySoldier.hpp \
     AbstractFactory/soldiers/HardSoldier.hpp \
     AbstractFactory/soldiers/MediumSoldier.hpp \
+    AbstractFactory/type_list_excerpt.hpp \
     AcyclicVisitor/AcyclicVisitorExecution.hpp \
     AcyclicVisitor/AcyclicWidget.hpp \
     AcyclicVisitor/BaseAcyclicVisitable.hpp \
