@@ -27,10 +27,24 @@ public:
         AbstractSoldier* soldier = new EasySoldier();
 
         AbstractEnemyCloneFactory* cloneFactory = new EasyEnemyCloneFactory();
-        cloneFactory->setPrototype<AbstractMonster>(monster);
-        cloneFactory->setPrototype<AbstractSoldier>(soldier);
-
+        cloneFactory->setPrototype(monster);
+        cloneFactory->setPrototype(soldier);
         testFactory(cloneFactory);
+
+        cloneFactory = new MediumEnemyCloneFactory();
+        monster = new MediumMonster();
+        soldier = new MediumSoldier();
+        cloneFactory->setPrototype(monster);
+        cloneFactory->setPrototype(soldier);
+        testFactory(cloneFactory);
+
+        cloneFactory = new HardEnemyCloneFactory();
+        monster = new HardMonster();
+        soldier = new HardSoldier();
+        cloneFactory->setPrototype<AbstractMonster>(new MediumMonster());
+        cloneFactory->setPrototype<AbstractSoldier>(soldier);
+        testFactory(cloneFactory);
+
     }
 
     template <template <class> class TUnit, typename TList>
@@ -38,6 +52,7 @@ public:
         std::cout << "soldier is: " << factory->template create<AbstractSoldier>()->text() << '\n';
         std::cout << "monster is: " << factory->template create<AbstractMonster>()->text() << "\n\n";
     }
+
 };
 
 
