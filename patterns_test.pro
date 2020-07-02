@@ -25,6 +25,8 @@ HEADERS += \ \
     AbstractFactory/EasyEnemyFactory.hpp \
     AbstractFactory/HardEnemyFactory.hpp \
     AbstractFactory/MediumEnemyFactory.hpp \
+    AbstractFactory/TemplateAbstractFactory.hpp \
+    AbstractFactory/TemplateConcreteFactory.hpp \
     AbstractFactory/monsters/AbstractMonster.hpp \
     AbstractFactory/monsters/EasyMonster.hpp \
     AbstractFactory/monsters/HardMonster.hpp \

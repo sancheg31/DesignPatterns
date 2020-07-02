@@ -21,11 +21,22 @@ public:
         testFactory(factory);
         factory = new HardEnemyFactory();
         testFactory(factory);
+
+        std::cout << "\nAbstractCloneFactoryExecution\n\n";
+        AbstractMonster* monster = new EasyMonster();
+        AbstractSoldier* soldier = new EasySoldier();
+
+        AbstractEnemyCloneFactory* cloneFactory = new EasyEnemyCloneFactory();
+        cloneFactory->setPrototype<AbstractMonster>(monster);
+        cloneFactory->setPrototype<AbstractSoldier>(soldier);
+
+        testFactory(cloneFactory);
     }
 
-    void testFactory(AbstractEnemyFactory* factory) {
-        std::cout << "soldier is: " << factory->create<AbstractSoldier>()->text() << '\n';
-        std::cout << "monster is: " << factory->create<AbstractMonster>()->text() << "\n\n";
+    template <template <class> class TUnit, typename TList>
+    void testFactory(TemplateAbstractFactory<TUnit, TList>* factory) {
+        std::cout << "soldier is: " << factory->template create<AbstractSoldier>()->text() << '\n';
+        std::cout << "monster is: " << factory->template create<AbstractMonster>()->text() << "\n\n";
     }
 };
 

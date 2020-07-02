@@ -8,6 +8,7 @@ namespace abstract_factory {
 class AbstractMonster: public AbstractEnemy
 {
 public:
+    virtual AbstractMonster* clone() = 0;
     virtual ~AbstractMonster() { }
 };
 

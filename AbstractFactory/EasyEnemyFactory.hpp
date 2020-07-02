@@ -9,8 +9,12 @@ namespace patterns {
 namespace abstract_factory {
 
 using EasyEnemyFactory = TemplateConcreteFactory<AbstractEnemyFactory,
-                                                ConcreteFactoryUnit,
+                                                ConcreteFactoryNewUnit,
                                                 type_list<EasyMonster, EasySoldier>>;
+
+using EasyEnemyCloneFactory = TemplateConcreteFactory<AbstractEnemyCloneFactory,
+                                                        ConcreteFactoryCloneUnit,
+                                                        type_list<EasyMonster, EasySoldier>>;
 
 } //abstract factory
 } //patterns

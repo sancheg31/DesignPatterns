@@ -1,21 +1,37 @@
 #pragma once
 
-#include "type_list_excerpt.hpp"
-#include "AbstractEnemy.hpp"
 #include "soldiers/AbstractSoldier.hpp"
 #include "monsters/AbstractMonster.hpp"
 
+#include "TemplateAbstractFactory.hpp"
+#include "TemplateConcreteFactory.hpp"
+
+#include <cassert>
+
+
 template <typename T>
-class AbstractFactoryUnit
+class AbstractFactoryNewUnit
 {
 public:
     virtual T* doCreate(TType<T>) = 0;
-    virtual ~AbstractFactoryUnit() { }
+    virtual ~AbstractFactoryNewUnit() { }
+};
+
+template <typename T>
+class AbstractFactoryCloneUnit
+{
+public:
+
+    virtual T* doCreate(TType<T>) = 0;
+    virtual void doGetPrototype(T*&) = 0;
+    virtual void doSetPrototype(T*) = 0;
+
+    virtual ~AbstractFactoryCloneUnit() { }
 };
 
 
 template <class ConcreteProduct, class Base>
-class ConcreteFactoryUnit: public Base
+class ConcreteFactoryNewUnit: public Base
 {
     using base_product_list = typename Base::product_list;
 protected:
@@ -28,44 +44,47 @@ protected:
     }
 
 public:
-    virtual ~ConcreteFactoryUnit() { }
+    virtual ~ConcreteFactoryNewUnit() { }
 };
 
-template <template <class> class TUnit, class TList>
-class TemplateAbstractFactory;
-
-template <template <class> class TUnit, typename ... Tp>
-class TemplateAbstractFactory<TUnit, type_list<Tp...>>: protected TUnit<Tp>...
+template <class ConcreteProduct, class Base>
+class ConcreteFactoryCloneUnit: public Base
 {
-public:
-    using product_list = type_list<Tp...>;
-    template <class T>
-    T* create() {
-        TUnit<T>& unit = *this;
-        return unit.doCreate(TType<T>{});
+    using base_product_list = typename Base::product_list;
+protected:
+
+    using product_list = pop_front_t<base_product_list>;
+    using abstract_product = first_t<base_product_list>;
+
+    virtual abstract_product* doCreate(TType<abstract_product>) override {
+        assert(prototype);
+        return prototype->clone();
     }
 
-    virtual ~TemplateAbstractFactory() { }
+    virtual void doGetPrototype(abstract_product*& prot) override {
+        prot = prototype;
+    }
+
+    virtual void doSetPrototype(abstract_product* prot) override {
+        prototype = prot;
+    }
+
+private:
+    abstract_product* prototype;
 };
 
-template<
-        class AbstractFactory,
-        template <class, class> class TUnit = ConcreteFactoryUnit,
-        class TList = typename AbstractFactory::product_list
-        >
-class TemplateConcreteFactory: public generate_linear_hierarchy<TList, TUnit, AbstractFactory>
-{
-    using product_list = typename AbstractFactory::product_list;
-    using concrete_product_list = TList;
-
-    virtual ~TemplateConcreteFactory() { }
-};
 
 namespace patterns {
 namespace abstract_factory {
 
-using AbstractEnemyFactory = TemplateAbstractFactory<AbstractFactoryUnit,
+using AbstractEnemyFactory = TemplateAbstractFactory<
+                                                    AbstractFactoryNewUnit,
                                                     type_list<AbstractSoldier, AbstractMonster>>;
+
+using AbstractEnemyCloneFactory = TemplateAbstractCloneFactory<
+                                                    AbstractFactoryCloneUnit,
+                                                    type_list<AbstractSoldier, AbstractMonster>>;
+
 
 } //abstract factory
 } //patterns

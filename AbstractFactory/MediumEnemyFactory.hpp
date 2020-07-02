@@ -9,8 +9,12 @@ namespace abstract_factory {
 
 
 using MediumEnemyFactory = TemplateConcreteFactory<AbstractEnemyFactory,
-                                                ConcreteFactoryUnit,
+                                                ConcreteFactoryNewUnit,
                                                 type_list<MediumMonster, MediumSoldier>>;
+
+using MediumEnemyCloneFactory = TemplateConcreteFactory<AbstractEnemyCloneFactory,
+                                                        ConcreteFactoryCloneUnit,
+                                                        type_list<MediumMonster, MediumSoldier>>;
 
 } //abstract factory
 } //patterns
