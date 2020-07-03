@@ -8,6 +8,10 @@ using namespace std;
 #include "AcyclicVisitor/AcyclicVisitorExecution.hpp"
 #include "AbstractFactory/AbstractFactoryExecution.hpp"
 
+#include "ObjectFactory/ObjectFactoryExecution.hpp"
+
+using namespace patterns::object_factory;
+
 int main() {
 
     patterns::visitor::VisitorExecution exec1;
@@ -16,5 +20,7 @@ int main() {
     exec2.execute();
     patterns::abstract_factory::AbstractFactoryExecution exec3;
     exec3.execute();
+    patterns::object_factory::ObjectFactoryExecution exec4;
+    exec4.execute();
     return 0;
 }

@@ -23,6 +23,8 @@ HEADERS += \ \
     AbstractFactory/AbstractEnemyFactory.hpp \
     AbstractFactory/AbstractFactoryExecution.hpp \
     AbstractFactory/EasyEnemyFactory.hpp \
+    AbstractFactory/FactoryNewUnit.hpp \
+    AbstractFactory/FactoryCloneUnit.hpp \
     AbstractFactory/HardEnemyFactory.hpp \
     AbstractFactory/MediumEnemyFactory.hpp \
     AbstractFactory/TemplateAbstractFactory.hpp \
@@ -49,4 +51,9 @@ HEADERS += \ \
     CyclicVisitor/ConcreteWidget1.hpp \
     CyclicVisitor/ConcreteWidget2.hpp \
     CyclicVisitor/VisitorExecution.hpp \
-    CyclicVisitor/Widget.hpp
+    CyclicVisitor/Widget.hpp \
+    ObjectFactory/CloneFactory.hpp \
+    ObjectFactory/ObjectFactory.hpp \
+    ObjectFactory/ObjectFactoryExecution.hpp \
+    ObjectFactory/ShapeHierarchy.hpp
+
